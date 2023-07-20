@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.description = "An ActiveModel extension that strips tags from attributes before validation using the strip_tags helper."
   spec.homepage = "https://github.com/wulffeld/strip-tags"
   spec.license = "MIT"
-  spec.required_ruby_version = ">= 1.9.3"
+  spec.required_ruby_version = ">= 2.5"
 
   spec.metadata["homepage_uri"] = spec.homepage
   spec.metadata["source_code_uri"] = "https://github.com/wulffeld/strip-tags"
