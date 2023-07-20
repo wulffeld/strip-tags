@@ -1,7 +1,7 @@
 require "spec_helper"
 
 describe "StripTags: class methods" do
-  it "strips whitespace" do
+  it "strips tags" do
     expect(StripTags.strip("")).to be_nil
     expect(StripTags.strip("foo<script>alert('xss')</script>")).to eq("foo")
   end

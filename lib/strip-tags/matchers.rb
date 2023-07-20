@@ -1,6 +1,5 @@
 module StripTags
   module Matchers
-
     # RSpec Examples:
     #
     #   it { is_expected.to strip_tag(:first_name) }
@@ -29,25 +28,25 @@ module StripTags
       def matches?(subject)
         @attributes.all? do |attribute|
           @attribute = attribute
-          subject.send("#{@attribute}=", " string ")
+          subject.send("#{@attribute}=", "foo> & < <script>alert('xss')</script>")
           subject.valid?
-          subject.send(@attribute) == "string"
+          subject.send(@attribute) == "foo> & < "
         end
       end
 
       def failure_message # RSpec 3.x
-        "Expected whitespace to be #{expectation} from ##{@attribute}, but it was not"
+        "Expected tags to be #{expectation} from ##{@attribute}, but it was not"
       end
       alias_method :failure_message_for_should, :failure_message # RSpec 1.2, 2.x, and minitest-matchers
 
       def failure_message_when_negated # RSpec 3.x
-        "Expected whitespace to remain on ##{@attribute}, but it was #{expectation}"
+        "Expected tags to remain on ##{@attribute}, but it was #{expectation}"
       end
       alias_method :failure_message_for_should_not, :failure_message_when_negated # RSpec 1.2, 2.x, and minitest-matchers
       alias_method :negative_failure_message,       :failure_message_when_negated # RSpec 1.1
 
       def description
-        "#{expectation(false)} whitespace from #{@attributes.map {|el| "##{el}" }.to_sentence}"
+        "#{expectation(false)} tags from #{@attributes.map {|el| "##{el}" }.to_sentence}"
       end
 
       private

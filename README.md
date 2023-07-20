@@ -10,9 +10,10 @@ An ActiveModel extension that strips tags from attributes before validation usin
 It preserves '&', '<' and '>' characters.
 
 It works by adding a before_validation hook to the record.  By default, all
-attributes are stripped of whitespace, but `:only` and `:except`
-options can be used to limit which attributes are stripped.  Both options accept
-a single attribute (`only: :field`) or arrays of attributes (`except: [:field1, :field2, :field3]`).
+attributes are stripped of tags, but `:only` and `:except` options can be
+used to limit which attributes are stripped.  Both options accept a single
+attribute (`only: :field`) or arrays of attributes (`except: [:field1,
+:field2, :field3]`).
 
 It's also possible to skip stripping the attributes altogether per model using the `:if` and `:unless` options.
 
