@@ -14,7 +14,7 @@ module StripTags
     #   must { strip_tags(:first_name, :last_name) }
     #   wont { strip_tag(:password) }
     #   wont { strip_tags(:password, :encrypted_password) }
-    def strip_tags(*attributes)
+    def strip_tag(*attributes)
       StripTagsMatcher.new(attributes)
     end
 
