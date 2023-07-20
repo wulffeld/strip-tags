@@ -28,9 +28,9 @@ module StripTags
       def matches?(subject)
         @attributes.all? do |attribute|
           @attribute = attribute
-          subject.send("#{@attribute}=", "foo> & < <script>alert('xss')</script>")
+          subject.send("#{@attribute}=", "foo> & <<script>alert('xss')</script>")
           subject.valid?
-          subject.send(@attribute) == "foo> & < "
+          subject.send(@attribute) == "foo> & <"
         end
       end
 
