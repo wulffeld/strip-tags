@@ -141,7 +141,7 @@ testing of attribute assignment. You can use this with
 #### To initialize **RSpec**, add this to your `spec_helper.rb`:
 
 ```ruby
-require "strip_tags/matchers"
+require "strip-tags/matchers"
 
 RSpec.configure do |config|
   config.include StripTags::Matchers
@@ -151,7 +151,7 @@ end
 #### To initialize **Shoulda (with test-unit)**, add this to your `test_helper.rb`:
 
 ```ruby
-require "strip_tags/matchers"
+require "strip-tags/matchers"
 
 class Test::Unit::TestCase
   extend StripTags::Matchers
@@ -161,7 +161,7 @@ end
 OR if in a Rails environment, you might prefer this:
 
 ``` ruby
-require "strip_tags/matchers"
+require "strip-tags/matchers"
 
 class ActiveSupport::TestCase
   extend StripTags::Matchers
@@ -171,7 +171,7 @@ end
 #### To initialize **Minitest-MatchersVaccine**, add this to your `test_helper.rb`:
 
 ```ruby
-require "strip_tags/matchers"
+require "strip-tags/matchers"
 
 class MiniTest::Spec
   include StripTags::Matchers
@@ -181,7 +181,7 @@ end
 OR if in a Rails environment, you might prefer this:
 
 ``` ruby
-require "strip_tags/matchers"
+require "strip-tags/matchers"
 
 class ActiveSupport::TestCase
   include StripTags::Matchers
@@ -191,7 +191,7 @@ end
 #### To initialize **Minitest-Matchers**, add this to your `test_helper.rb`:
 
 ```ruby
-require "strip_tags/matchers"
+require "strip-tags/matchers"
 
 class MiniTest::Spec
   include StripTags::Matchers
