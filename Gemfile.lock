@@ -1,8 +1,8 @@
 PATH
   remote: .
   specs:
-    strip-tags (1.0.0)
-      activemodel (>= 5.2, < 8.0)
+    strip-tags (1.0.1)
+      activemodel (>= 5.2)
 
 GEM
   remote: https://rubygems.org/
