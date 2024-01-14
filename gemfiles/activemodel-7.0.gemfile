@@ -2,4 +2,6 @@ source "https://rubygems.org"
 
 gem "activemodel", "~> 7.0.0"
 
+eval_gemfile File.expand_path('../Gemfile', __FILE__)
+
 gemspec path: "../"

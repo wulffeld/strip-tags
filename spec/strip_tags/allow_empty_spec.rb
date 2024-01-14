@@ -1,4 +1,4 @@
-require "spec_helper"
+require "rails_helper"
 
 module MockAttributes
   def self.included(base)
@@ -23,7 +23,7 @@ describe "StripTags: allow empty" do
   it "strips and allow empty" do
     record = StripAllowEmpty.new(@init_params)
     record.valid?
-    expect(record.foo).to eq("foo")
+    expect_string(record.foo, "foo", "fooalert('xss')")
     expect(record.bar).to eq("")
   end
 
@@ -32,7 +32,7 @@ describe "StripTags: allow empty" do
     record.valid?
     record.assign_attributes(@init_params)
     record.valid?
-    expect(record.foo).to eq("foo")
+    expect_string(record.foo, "foo", "fooalert('xss')")
     expect(record.bar).to eq("")
   end
 end

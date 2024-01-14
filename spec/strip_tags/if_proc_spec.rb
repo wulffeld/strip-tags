@@ -1,4 +1,4 @@
-require "spec_helper"
+require "rails_helper"
 
 module MockAttributes
   def self.included(base)
@@ -7,7 +7,6 @@ module MockAttributes
     base.attribute :strip_me
   end
 end
-
 
 class IfProcMockRecord < Tableless
   include MockAttributes
@@ -25,8 +24,8 @@ describe "StripTags: if proc" do
   it "strips all fields if true (proc)" do
     record = IfProcMockRecord.new(@init_params.merge(strip_me: true))
     record.valid?
-    expect(record.foo).to eq("foo")
-    expect(record.bar).to eq("bar")
+    expect_string(record.foo, "foo", "fooalert('xss')")
+    expect_string(record.bar, "bar", "alert('xss')bar")
   end
 
   it "strips no fields if false (proc)" do

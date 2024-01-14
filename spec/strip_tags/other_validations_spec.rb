@@ -1,4 +1,4 @@
-require "spec_helper"
+require "rails_helper"
 
 class CoexistWithOtherValidations < Tableless
   attribute :number, type: Integer

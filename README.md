@@ -31,7 +31,7 @@ gem "strip-tags"
 
 ```ruby
 class DrunkPokerPlayer < ActiveRecord::Base
-  strip-tags
+  strip_tags
 end
 ```
 
@@ -40,7 +40,7 @@ end
 ```ruby
 # all attributes will be stripped except :boxers
 class SoberPokerPlayer < ActiveRecord::Base
-  strip-tags except: :boxers
+  strip_tags except: :boxers
 end
 ```
 
@@ -49,7 +49,7 @@ end
 ```ruby
 # only :shoe, :sock, and :glove attributes will be stripped
 class ConservativePokerPlayer < ActiveRecord::Base
-  strip-tags only: [:shoe, :sock, :glove]
+  strip_tags only: [:shoe, :sock, :glove]
 end
 ```
 
@@ -58,7 +58,7 @@ end
 ```ruby
 # Only records with odd ids will be stripped
 class OddPokerPlayer < ActiveRecord::Base
-  strip-tags if: :strip_me?
+  strip_tags if: :strip_me?
 
   def strip_me?
     id.odd?
@@ -69,9 +69,9 @@ end
 ### Using `unless`
 
 ```ruby
-# strip-tags will be applied randomly
+# strip_tags will be applied randomly
 class RandomPokerPlayer < ActiveRecord::Base
-  strip-tags unless: :strip_me?
+  strip_tags unless: :strip_me?
 
   def strip_me?
     [true, false].sample
@@ -84,7 +84,7 @@ end
 ```ruby
 # Empty attributes will not be converted to nil
 class BrokePokerPlayer < ActiveRecord::Base
-  strip-tags allow_empty: true
+  strip_tags allow_empty: true
 end
 ```
 
@@ -98,7 +98,7 @@ It also works on other ActiveModel classes, such as [Mongoid](http://mongoid.org
 class User
   include Mongoid::Document
 
-  strip-tags only: :email
+  strip_tags only: :email
 end
 ```
 
@@ -112,7 +112,7 @@ class Person
   attribute :name
   attribute :email
 
-  strip-tags
+  strip_tags
 end
 
 ```

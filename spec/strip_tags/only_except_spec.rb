@@ -1,4 +1,4 @@
-require "spec_helper"
+require "rails_helper"
 
 module MockAttributes
   def self.included(base)
@@ -40,7 +40,7 @@ describe "StripTags: only / except option" do
   it "strips only one field" do
     record = StripOnlyOneMockRecord.new(@init_params)
     record.valid?
-    expect(record.foo).to eq("foo")
+    expect_string(record.foo, "foo", "fooalert('xss')")
     expect(record.bar).to eq("<script>alert('xss')</script>bar")
     expect(record.moo).to eq("moo<script>alert('xss')</script>")
   end
@@ -48,8 +48,8 @@ describe "StripTags: only / except option" do
   it "strips only two fields" do
     record = StripOnlyTwoMockRecord.new(@init_params)
     record.valid?
-    expect(record.foo).to eq("foo")
-    expect(record.bar).to eq("bar")
+    expect_string(record.foo, "foo", "fooalert('xss')")
+    expect_string(record.bar, "bar", "alert('xss')bar")
     expect(record.moo).to eq("moo<script>alert('xss')</script>")
   end
 
@@ -57,8 +57,8 @@ describe "StripTags: only / except option" do
     record = StripExceptOneMockRecord.new(@init_params)
     record.valid?
     expect(record.foo).to eq("foo<script>alert('xss')</script>")
-    expect(record.bar).to eq("bar")
-    expect(record.moo).to eq("moo")
+    expect_string(record.bar, "bar", "alert('xss')bar")
+    expect_string(record.moo, "moo", "mooalert('xss')")
   end
 
   it "strips all except two fields" do
@@ -66,6 +66,6 @@ describe "StripTags: only / except option" do
     record.valid?
     expect(record.foo).to eq("foo<script>alert('xss')</script>")
     expect(record.bar).to eq("<script>alert('xss')</script>bar")
-    expect(record.moo).to eq("moo")
+    expect_string(record.moo, "moo", "mooalert('xss')")
   end
 end
