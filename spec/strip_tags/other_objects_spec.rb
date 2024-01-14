@@ -1,4 +1,4 @@
-require "spec_helper"
+require "rails_helper"
 
 class CoexistWithOtherObjects < Tableless
   attr_accessor :arr, :hsh, :str
@@ -20,6 +20,6 @@ describe "StripTagsL other objects" do
     record.valid?
     expect(record.arr).to eq([])
     expect(record.hsh).to eq({})
-    expect(record.str).to eq("foo")
+    expect_string(record.str, "foo", "fooalert('xss')")
   end
 end

@@ -1,4 +1,4 @@
-require "spec_helper"
+require "rails_helper"
 
 module MockAttributes
   def self.included(base)
@@ -26,8 +26,8 @@ describe "StripTags: defaults" do
   it "strips all fields" do
     record = StripAllMockRecord.new(@init_params)
     record.valid?
-    expect(record.foo).to eq("foo> & < ")
-    expect(record.bar).to eq("bar")
-    expect(record.moo).to eq("moo")
+    expect_string(record.foo, "foo> & < ", "foo> & < alert('xss')")
+    expect_string(record.bar, "bar", "alert('xss')bar")
+    expect_string(record.moo, "moo", "mooalert('xss')")
   end
 end

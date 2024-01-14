@@ -1,9 +1,13 @@
-require "spec_helper"
+require "rails_helper"
 
 describe "StripTags: class methods" do
   it "strips tags" do
     expect(StripTags.strip("")).to be_nil
-    expect(StripTags.strip("foo<script>alert('xss')</script>")).to eq("foo")
+    if Gem::Version.new(Rails.version) >= Gem::Version.new('7.1')
+      expect(StripTags.strip("foo<script>alert('xss')</script>")).to eq("fooalert('xss')")
+    else
+      expect(StripTags.strip("foo<script>alert('xss')</script>")).to eq("foo")
+    end
   end
 
   it "allows empty" do

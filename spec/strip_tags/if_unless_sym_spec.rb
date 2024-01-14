@@ -1,4 +1,4 @@
-require "spec_helper"
+require "rails_helper"
 
 module MockAttributes
   def self.included(base)
@@ -40,8 +40,8 @@ describe "StripTags: if / unless option" do
   it "strips all fields if true" do
     record = IfSymMockRecord.new(@init_params.merge(strip_me: true))
     record.valid?
-    expect(record.foo).to eq("foo")
-    expect(record.bar).to eq("bar")
+    expect_string(record.foo, "foo", "fooalert('xss')")
+    expect_string(record.bar, "bar", "alert('xss')bar")
   end
 
   it "strips no fields if false" do
@@ -55,8 +55,8 @@ describe "StripTags: if / unless option" do
   it "strips all fields unless false" do
     record = UnlessSymMockRecord.new(@init_params.merge(skip_me: false))
     record.valid?
-    expect(record.foo).to eq("foo")
-    expect(record.bar).to eq("bar")
+    expect_string(record.foo, "foo", "fooalert('xss')")
+    expect_string(record.bar, "bar", "alert('xss')bar")
   end
 
   it "strips no fields unless true" do
