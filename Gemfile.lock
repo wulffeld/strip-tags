@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    strip-tags (1.1.0)
+    strip-tags (1.1.1)
       activemodel (>= 5.2)
 
 GEM

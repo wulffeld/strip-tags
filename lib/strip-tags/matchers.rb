@@ -30,10 +30,10 @@ module StripTags
           @attribute = attribute
           subject.send("#{@attribute}=", "foo> & <<script>alert('xss')</script>")
           subject.valid?
-          if Rails::VERSION::MAJOR <= 7.0
-            subject.send(@attribute) == "foo> & <"
+          if Gem::Version.new(Rails.version) >= Gem::Version.new("7.1")
+            subject.send(@attribute) == "foo> & <alert('xss')"
           else
-            subject.send(@attribute) == "foo> & alert('xss')"
+            subject.send(@attribute) == "foo> & <"
           end
         end
       end
