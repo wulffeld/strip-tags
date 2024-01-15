@@ -3,7 +3,7 @@ require "rails_helper"
 describe "StripTags: class methods" do
   it "strips tags" do
     expect(StripTags.strip("")).to be_nil
-    if Gem::Version.new(Rails.version) >= Gem::Version.new('7.1')
+    if Gem::Version.new(Rails.version) >= Gem::Version.new("7.1")
       expect(StripTags.strip("foo<script>alert('xss')</script>")).to eq("fooalert('xss')")
     else
       expect(StripTags.strip("foo<script>alert('xss')</script>")).to eq("foo")
