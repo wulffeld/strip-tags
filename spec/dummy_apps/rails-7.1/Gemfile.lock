@@ -135,7 +135,7 @@ GEM
       date
       stringio
     racc (1.8.1)
-    rack (2.2.13)
+    rack (2.2.14)
     rack-session (1.0.2)
       rack (< 3)
     rack-test (2.2.0)
@@ -233,4 +233,4 @@ DEPENDENCIES
   strip-tags!
 
 BUNDLED WITH
-   2.4.10
+   2.5.23
