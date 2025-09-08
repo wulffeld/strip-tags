@@ -121,7 +121,7 @@ end
 
 ```ruby
 # where record is an ActiveModel instance
-StripTags.strip(record,: true)
+StripTags.strip(record)
 
 # works directly on Strings too
 StripTags.strip(" foo \t") #=> "foo"
@@ -215,9 +215,9 @@ end
 ```ruby
 class UserTest < ActiveSupport::TestCase
   should strip_tag(:name)
-  should strip-tags(:name, :email)
+  should strip_tags(:name, :email)
   should_not strip_tag(:password)
-  should_not strip-tags(:password, :encrypted_password)
+  should_not strip_tags(:password, :encrypted_password)
 end
 ```
 
@@ -229,9 +229,9 @@ describe User do
 
   it "strips attributes" do
     must strip_tag(:name)
-    must strip-tags(:name, :email)
+    must strip_tags(:name, :email)
     wont strip_tag(:password)
-    wont strip-tags(:password, :encrypted_password)
+    wont strip_tags(:password, :encrypted_password)
   end
 end
 ```
@@ -243,9 +243,9 @@ describe User do
   subject { User.new }
 
   must { strip_tag(:name) }
-  must { strip-tags(:name, :email) }
+  must { strip_tags(:name, :email) }
   wont { strip_tag(:password) }
-  wont { strip-tags(:password, :encrypted_password) }
+  wont { strip_tags(:password, :encrypted_password) }
 end
 ```
 
