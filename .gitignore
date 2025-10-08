@@ -3,3 +3,4 @@ coverage
 **/log
 pkg
 **/tmp
+**/test.sqlite3
